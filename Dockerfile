@@ -22,7 +22,8 @@ USER minecraft
 WORKDIR /home/minecraft
 
 # Copy files
-COPY server.properties server.properties
+COPY eula.txt /
+COPY server.properties /
 COPY entrypoint.sh /entrypoint.sh
 
 # Expose Minecraft port
