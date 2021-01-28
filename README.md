@@ -1,2 +1,4 @@
-# docker-minecraft-server
-Minecraft server running in a docker container
+### Docker Minecraft
+
+A simple dockerized Minecraft Server
+

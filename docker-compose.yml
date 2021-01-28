@@ -1,0 +1,18 @@
+version: '3.7'
+
+services:
+  minecraft:
+    image: ghcr.io/hoellenwesen/docker-minecraft-server:latest
+    container_name: minecraft-server
+    restart: unless-stopped
+    environment:
+    - JAVA_XMS=2048M
+    - JAVA_XMX=2048M
+    - MINECRAFT_VERSION=latest
+    ports:
+      - "25565:25565"
+    volumes:
+      - minecraft:/root/minecraft
+
+volumes:
+  minecraft:
