@@ -1,4 +1,4 @@
-FROM adoptopenjdk/openjdk11-openj9:alpine-jre
+FROM adoptopenjdk/openjdk11:jre
 
 LABEL maintainer="hoellenwesen"
 
@@ -13,10 +13,10 @@ ENV JAVA_XMS=$JAVA_XMS
 ENV JAVA_XMX=$JAVA_XMX
 
 # Get prerequisites
-RUN apk update \
-    && apk upgrade \
-    && apk add curl ca-certificates openssl git tar bash tzdata iproute2 jq \
-    && adduser -D -h /home/minecraft minecraft
+RUN apt-get update \
+    && apt-get upgrade \
+    && apt-get install -y curl ca-certificates openssl git tar bash tzdata iproute2 jq \
+    && adduser --disabled-login --home /home/minecraft minecraft
 
 USER minecraft
 WORKDIR /home/minecraft
