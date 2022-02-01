@@ -1,4 +1,5 @@
-FROM adoptopenjdk/openjdk11:jre
+#FROM adoptopenjdk/openjdk11:jre
+FROM adoptopenjdk/openjdk11:alpine-jre
 
 LABEL maintainer="hoellenwesen"
 
@@ -13,10 +14,11 @@ ENV JAVA_XMS=$JAVA_XMS
 ENV JAVA_XMX=$JAVA_XMX
 
 # Get prerequisites
-RUN apt-get update \
-    && apt-get upgrade \
-    && apt-get install -y curl ca-certificates openssl git tar bash tzdata iproute2 jq \
-    && adduser --disabled-login --home /home/minecraft minecraft
+RUN apk update && \
+    apk upgrade && \
+    apk add curl ca-certificates openssl git tar tzdata iproute2 jq
+
+RUN adduser -s -h /home/minecraft minecraft
 
 USER minecraft
 WORKDIR /home/minecraft
@@ -30,4 +32,4 @@ COPY entrypoint.sh /entrypoint.sh
 EXPOSE 25565/tcp
 
 # Run Minecraft service
-CMD ["/bin/bash", "/entrypoint.sh"]
+CMD ["/bin/sh", "/entrypoint.sh"]
