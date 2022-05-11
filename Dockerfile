@@ -13,7 +13,7 @@ ENV JAVA_XMS=$JAVA_XMS
 ENV JAVA_XMX=$JAVA_XMX
 
 # Get prerequisites
-apk update --no-cache \
+RUN apk update --no-cache \
     && apk add --no-cache curl ca-certificates openssl git tar bash tzdata iproute2 jq \
     && adduser --disabled-login --home /home/minecraft minecraft
 
