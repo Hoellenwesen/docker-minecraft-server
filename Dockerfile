@@ -14,8 +14,10 @@ ENV JAVA_XMX=$JAVA_XMX
 
 # Get prerequisites
 RUN apk update --no-cache \
-    && apk add --no-cache curl ca-certificates openssl git tar bash tzdata iproute2 jq \
-    && adduser --disabled-login --home /home/minecraft minecraft
+    && apk add --no-cache curl ca-certificates openssl git tar bash tzdata iproute2 jq
+    
+# Add user
+RUN adduser -S -h /home/minecraft minecraft
 
 USER minecraft
 WORKDIR /home/minecraft
