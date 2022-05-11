@@ -1,4 +1,4 @@
-FROM eclipse-temurin:17-jdk
+FROM eclipse-temurin:18-jre-alpine
 
 LABEL maintainer="hoellenwesen"
 
@@ -13,9 +13,8 @@ ENV JAVA_XMS=$JAVA_XMS
 ENV JAVA_XMX=$JAVA_XMX
 
 # Get prerequisites
-RUN apt-get update \
-    && apt-get upgrade \
-    && apt-get install -y curl ca-certificates openssl git tar bash tzdata iproute2 jq \
+apk update --no-cache \
+    && apk add --no-cache curl ca-certificates openssl git tar bash tzdata iproute2 jq \
     && adduser --disabled-login --home /home/minecraft minecraft
 
 USER minecraft
