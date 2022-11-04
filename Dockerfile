@@ -1,4 +1,4 @@
-FROM eclipse-temurin:18-jre-alpine
+FROM eclipse-temurin:17-jre-alpine
 
 LABEL maintainer="hoellenwesen"
 
