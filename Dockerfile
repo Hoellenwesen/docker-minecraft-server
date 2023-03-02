@@ -13,8 +13,8 @@ ENV JAVA_XMS=$JAVA_XMS
 ENV JAVA_XMX=$JAVA_XMX
 
 # Get prerequisites
-RUN apt update --no-cache \
-    && apt install --no-cache curl ca-certificates openssl git tar bash tzdata iproute2 jq
+RUN apt update \
+    && apt install curl ca-certificates openssl git tar bash tzdata iproute2 jq
     
 # Add user
 RUN adduser -S -h /home/minecraft minecraft
